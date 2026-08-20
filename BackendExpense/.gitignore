@@ -1,6 +1,10 @@
-node_modules
-uploads
-migrations
+# Ignorer les modules et fichiers d'environnement
+node_modules/
 .env
-*.js
+uploads/
+
+# Fichiers d'archives
 *.rar
+*.zip
+
+# NE PAS mettre *.js car cela masque votre code source !
