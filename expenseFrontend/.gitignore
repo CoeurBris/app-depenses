@@ -1,0 +1,9 @@
+# Backend
+BackendExpense/node_modules/
+BackendExpense/dist/
+BackendExpense/.env
+
+# Frontend
+expenseFrontend/.dart_tool/
+expenseFrontend/build/
+expenseFrontend/.env

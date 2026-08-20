@@ -1,0 +1,6 @@
+node_modules
+uploads
+migrations
+.env
+*.js
+*.rar

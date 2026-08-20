@@ -1,0 +1,59 @@
+import 'package:expenses/models/notification_model.dart';
+import 'package:expenses/services/notification_service.dart';
+
+class NotificationRepository {
+  final NotificationService _notificationService;
+
+  NotificationRepository({
+    NotificationService? notificationService,
+  }) : _notificationService =
+            notificationService ?? NotificationService();
+
+  /// Récupérer toutes les notifications
+  Future<List<NotificationModel>> getNotifications() async {
+    final data = await _notificationService.getNotifications();
+
+    return data
+        .map(
+          (json) => NotificationModel.fromJson(
+            Map<String, dynamic>.from(json),
+          ),
+        )
+        .toList();
+  }
+
+  /// Récupérer une notification
+  Future<NotificationModel> getNotificationById(
+    int id,
+  ) async {
+    final data =
+        await _notificationService.getNotificationById(
+      id.toString(),
+    );
+
+    return NotificationModel.fromJson(data);
+  }
+
+  /// Marquer une notification comme lue
+  Future<NotificationModel> markAsRead(
+    int id,
+  ) async {
+    final data = await _notificationService.markAsRead(
+      id.toString(),
+    );
+
+    return NotificationModel.fromJson(data);
+  }
+
+  /// Marquer toutes les notifications comme lues
+  Future<void> markAllAsRead() async {
+    await _notificationService.markAllAsRead();
+  }
+
+  /// Supprimer une notification
+  Future<void> deleteNotification(int id) async {
+    await _notificationService.deleteNotification(
+      id.toString(),
+    );
+  }
+}
